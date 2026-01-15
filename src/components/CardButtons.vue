@@ -6,7 +6,7 @@
       padding="11px 16px"
       aria-label="Decrease"
       class="bg-yellow"
-      @click="$emit('decrease')"
+      @click="match.addYellowCard(isHomeTeam, playerNumber)"
     />
     <q-btn
       dense
@@ -14,12 +14,31 @@
       padding="11px 16px"
       aria-label="Increase"
       class="bg-red"
-      @click="$emit('increase')"
+      @click="match.addRedCard(isHomeTeam, playerNumber)"
     />
   </div>
 </template>
 
 <script setup>
+import { useMatchStore } from 'src/stores/match.js';
+
+const match = useMatchStore();
+const props = defineProps({
+  isHomeTeam: {
+    type: Boolean,
+    default: false
+  },
+  
+  playerNumber: {
+    type: Number
+  }
+})
+
+const setRedCard = () => {
+  console.log(props.isHomeTeam, props.playerNumber)
+  match.addRedCard(props.isHomeTeam, props.playerNumber)
+}
+
 defineEmits(['decrease', 'increase']);
 </script>
 

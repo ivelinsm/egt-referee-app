@@ -53,6 +53,20 @@ h1 {
   background-color: $red;
 }
 
+td:has(~ .bold):nth-of-type(2) {
+  font-weight: 600;
+}
+
+td:has(~ .yellow):nth-of-type(2) {
+  font-weight: 600;
+  color: $yellow !important;
+}
+
+td:has(~ .red):nth-of-type(2) {
+  font-weight: 600;
+  color: $red !important;
+}
+
 .addition-details {
     margin-top: 24px;
   h2 {

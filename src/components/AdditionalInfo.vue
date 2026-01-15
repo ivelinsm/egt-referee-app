@@ -6,5 +6,7 @@
 </template>
 
 <script setup>
+import { useMatchStore } from 'src/stores/match';
 
+const match = useMatchStore();
 </script>

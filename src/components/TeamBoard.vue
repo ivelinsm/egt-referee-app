@@ -1,44 +1,57 @@
 <template>
   <div>
     <h1>{{ props.title }}</h1>
-    <div class="table-wrapper" :class="[ props.isHomeTeam ? 'home-team-bg' : 'away-team-bg' ]">
-      <q-table :rows="rows" :columns="columns" :flat="true" row-key="name" hide-pagination :dense="true" class="transperent-table" >
-      <template #body-cell-buttons="slotProps">
-          <q-td :props="slotProps">
-            <CardButtons />
+    <div class="table-wrapper" :class="[props.isHomeTeam ? 'home-team-bg' : 'away-team-bg']">
+      <q-table :rows="rowsFormatted" :columns="COLUMNS" :pagination="{ rowsPerPage: 11 }" class="transperent-table"
+        row-key="name" hide-pagination dense flat>
+        <template #body-cell-buttons="slotProps">
+          <q-td :props="slotProps"
+            :class="{ bold: slotProps.row.bold, yellow: slotProps.row.yellow > 0, red: slotProps.row.red > 0 }">
+            <CardButtons :isHomeTeam="props.isHomeTeam" :playerNumber="slotProps.row.number" />
           </q-td>
-        </template>  
+        </template>
       </q-table>
     </div>
-    <FaulsCounter />
+    <FaulsCounter :isHomeTeam="props.isHomeTeam"/>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { computed } from 'vue';
 import CardButtons from './CardButtons.vue';
 import FaulsCounter from './FaulsCounter.vue';
 
-const rows = ref([{
-  number: 1,
-  name: 'Player Name',
-  position: 'Player Position',
-  buttons: '[ ] [ ]'
-},
-{
-  number: 2,
-  name: 'Player Name',
-  position: 'Player Position',
-  buttons: '[ ] [ ]'
-},
-{
-  number: 3,
-  name: 'Player Name',
-  position: 'Player Position',
-  buttons: '[ ] [ ]'
-}]);
+const props = defineProps({
+  title: {
+    type: String,
+    default: 'TEAM NAME'
+  },
 
-const columns = ref([{
+  isHomeTeam: {
+    type: Boolean,
+    default: false
+  },
+
+  rows: {
+    type: Array,
+    default: () => []
+  },
+
+})
+
+const rowsFormatted = computed(() => props.rows?.map(row => ({
+  number: row.number,
+  name: row.name,
+  position: row.position,
+  buttons: '[] []',
+  bold: row.yellowCards || row.redCard,
+  yellow: row.yellowCards,
+  red: row.redCard,
+}
+))
+)
+
+const COLUMNS = [{
   name: 'number',
   label: 'No',
   align: 'left',
@@ -62,18 +75,6 @@ const columns = ref([{
   align: 'left',
   field: 'buttons'
 }
-]);
+];
 
-
-const props = defineProps({
-  title: {
-    type: String,
-    default: 'TEAM NAME'
-  },
-
-  isHomeTeam: {
-    type: Boolean,
-    default: false
-  }
-})
 </script>
