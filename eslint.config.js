@@ -55,6 +55,7 @@ export default [
     rules: {
       'prefer-promise-reject-errors': 'off',
       'no-unused-vars': 'off',
+      'no-unreachable': 'off',
       // allow debugger during development only
       'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     },

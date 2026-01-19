@@ -1,0 +1,84 @@
+{
+  "get": "fixtures",
+  "parameters": {
+    "id": "592872"
+  },
+  "errors": [],
+  "results": 1,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
+  "response": [
+    {
+      "fixture": {
+        "id": 592872,
+        "referee": "Michael Oliver, England",
+        "timezone": "UTC",
+        "date": "2021-05-23T15:00:00+00:00",
+        "timestamp": 1621782000,
+        "periods": {
+          "first": 1621782000,
+          "second": 1621785600
+        },
+        "venue": {
+          "id": 555,
+          "name": "Etihad Stadium",
+          "city": "Manchester"
+        },
+        "status": {
+          "long": "Match Finished",
+          "short": "FT",
+          "elapsed": 90,
+          "extra": null
+        }
+      },
+      "league": {
+        "id": 39,
+        "name": "Premier League",
+        "country": "England",
+        "logo": "https:\/\/media.api-sports.io\/football\/leagues\/39.png",
+        "flag": "https:\/\/media.api-sports.io\/flags\/gb-eng.svg",
+        "season": 2020,
+        "round": "Regular Season - 38",
+        "standings": true
+      },
+      "teams": {
+        "home": {
+          "id": 50,
+          "name": "Manchester City",
+          "logo": "https:\/\/media.api-sports.io\/football\/teams\/50.png",
+          "winner": true
+        },
+        "away": {
+          "id": 45,
+          "name": "Everton",
+          "logo": "https:\/\/media.api-sports.io\/football\/teams\/45.png",
+          "winner": false
+        }
+      },
+      "goals": {
+        "home": 5,
+        "away": 0
+      },
+      "score": {
+        "halftime": {
+          "home": 2,
+          "away": 0
+        },
+        "fulltime": {
+          "home": 5,
+          "away": 0
+        },
+        "extratime": {
+          "home": null,
+          "away": null
+        },
+        "penalty": {
+          "home": null,
+          "away": null
+        }
+      }
+    }
+  ]
+}

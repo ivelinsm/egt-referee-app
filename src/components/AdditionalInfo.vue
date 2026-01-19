@@ -1,7 +1,7 @@
 <template>
     <div class="addition-details">
-        <h2>Stadium name</h2>
-        <h2>Referee name</h2>
+        <h2>{{ match.data.referee }}</h2>
+        <h2>{{ match.data.venue }}</h2>
     </div>
 </template>
 
