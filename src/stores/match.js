@@ -16,11 +16,6 @@ export const useMatchStore = defineStore('match', {
     data: [],
   }),
 
-  getters: {
-    isLoading: (s) => s.status === STATUS.LOADING,
-    hasError: (s) => s.status === STATUS.ERROR,
-  },
-
   actions: {
     async fetchFixtureData() {
       if (USE_MOCK_DATA) {
