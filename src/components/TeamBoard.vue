@@ -20,7 +20,7 @@
               red: slotProps.row.red > 0,
             }"
           >
-            <CardButtons :isHomeTeam="isHomeTeam" :playerNumber="slotProps.row.number" />
+            <CardButtons @yellow="handleYellow(slotProps.row.number)" @red="handleRed(slotProps.row.number)" />
           </q-td>
         </template>
       </q-table>
@@ -33,6 +33,10 @@
 import { computed } from 'vue'
 import CardButtons from './CardButtons.vue'
 import FaulsCounter from './FaulsCounter.vue'
+
+import { useMatchStore } from 'src/stores/match.js'
+
+const match = useMatchStore()
 
 const props = defineProps({
   title: {
@@ -63,6 +67,14 @@ const rowsFormatted = computed(() =>
     red: Number(row.redCard),
   }))),
 )
+
+const handleYellow = function(playerNumber) {
+  match.addYellowCard(props.isHomeTeam, playerNumber)
+}
+
+const handleRed = function (playerNumber) {
+  match.addRedCard(props.isHomeTeam, playerNumber);
+}
 
 const COLUMNS = [
   {
